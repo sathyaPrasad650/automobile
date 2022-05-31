@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  console.log("--------------------------------------");
+  console.log("Using Object.create");
+
+  let car = {
+    brand: "TATA",
+    wheels: 4,
+    windows: 4,
+    steering: 1,
+    breaks: 2,
+    seats: 5,
+  };
+
+  let car1 = Object.create(car);
+  car1.model = "Nexon";
+  car1.mileage = "20 kmph";
+
+  let car2 = Object.create(car);
+  car2.model = "Punch";
+  car2.mileage = "22 kmph";
+
+  let car3 = Object.create(car);
+  car3.model = "Harrier";
+  car3.mileage = "21 kmph";
+
+  let car4 = Object.create(car);
+  car4.model = "Tiago";
+  car4.mileage = "18 kmph";
+
+  let car5 = Object.create(car);
+  car5.model = "Altroz";
+  car5.mileage = "21 kmph";
+
+  console.log("car1", car1);
+  console.log("car2", car2);
+  console.log("car3", car3);
+  console.log("car4", car4);
+  console.log("car5", car5);
+
+  console.log("--------------------------------------");
+  console.log("Using Constructor function");
+
+  function carDesign(
+    givenModel,
+    givenWheels,
+    givenWindows,
+    givenSteering,
+    givenBreaks
+  ) {
+    (this.model = givenModel),
+      (this.wheels = givenWheels),
+      (this.windows = givenWindows),
+      (this.steering = givenSteering),
+      (this.breaks = givenBreaks);
+  }
+
+  carDesign.prototype.safety = "Great";
+  carDesign.prototype.Headquarters = "India";
+
+  let car6 = new carDesign("Nexon", "4", "4", "1", "2");
+  console.log("car6", car6);
+
+  let car7 = new carDesign("Punch", "4", "4", "1", "2");
+  car7.model = "Tata Harrier";
+  console.log("car7", car7);
+
+  let car8 = new carDesign("Harrier", "4", "4", "1", "2");
+  console.log("car8", car8);
+
+  let car9 = new carDesign("Tiago", "4", "4", "1", "2");
+  console.log("car9", car9);
+</script>
